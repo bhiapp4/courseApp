@@ -32,8 +32,10 @@ public class Topic implements Serializable {
 
 	private LocalDateTime createdDateTime;
 
-	@Version
 	private LocalDateTime updatedDateTime;
+
+	@Version
+	private Integer versionId;
 
 	public Topic() {
 
@@ -94,6 +96,14 @@ public class Topic implements Serializable {
 
 	public void setUpdatedDateTime(LocalDateTime updatedDateTime) {
 		this.updatedDateTime = updatedDateTime;
+	}
+	
+	public Integer getVersionId() {
+		return versionId;
+	}
+	
+	public void setVersionId(Integer versionId) {
+		this.versionId = versionId;
 	}
 
 }

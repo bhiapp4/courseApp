@@ -63,8 +63,10 @@ public class Course implements Serializable{
 
 	private LocalDateTime createdDateTime;
 	
-	@Version
 	private LocalDateTime updatedDateTime;
+	
+	@Version
+	private Integer versionId;
 	
 	@Transient
 	private String authorFullName;
@@ -199,6 +201,15 @@ public class Course implements Serializable{
 	public void setAuthorFullName(String authorFullName) {
 		this.authorFullName = authorFullName;
 	}
+	
+	public Integer getVersionId() {
+		return versionId;
+	}
+	
+	public void setVersionId(Integer versionId) {
+		this.versionId = versionId;
+	}
+
 	
 
 
