@@ -51,8 +51,10 @@ public class User implements Serializable {
 	
 	private LocalDateTime createdDateTime;
 
-	@Version
 	private LocalDateTime updatedDateTime;
+	
+	@Version
+	private Integer versionId;
 	
 	@ManyToMany(mappedBy = "registeredUsers", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Course> courses = new ArrayList<>();
@@ -162,6 +164,14 @@ public class User implements Serializable {
 	
 	public void setCourses(List<Course> courses) {
 		this.courses = courses;
+	}
+	
+	public Integer getVersionId() {
+		return versionId;
+	}
+	
+	public void setVersionId(Integer versionId) {
+		this.versionId = versionId;
 	}
 	
 }
