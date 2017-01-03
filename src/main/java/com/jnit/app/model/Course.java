@@ -29,9 +29,19 @@ import org.hibernate.annotations.FetchMode;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 @Entity
-//@XmlRootElement
+//@XmlRootElement(name="test")
 @JsonInclude(Include.NON_EMPTY)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of={"courseId"})
 public class Course implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -71,144 +81,144 @@ public class Course implements Serializable{
 	@Transient
 	private String authorFullName;
 	
-	public Course(){
-		
-	}
-	
-	public Course(String name, String author, SkillLevel level, String description, String prereqs, BigDecimal fee,
-			String endGoal, String type) {
-		super();
-		this.name = name;
-		this.author = author;
-		this.level = level;
-		this.description = description;
-		this.prereqs = prereqs;
-		this.fee = fee;
-		this.endGoal = endGoal;
-		this.type = type;
-		this.createdDateTime = LocalDateTime.now();
-		this.updatedDateTime = LocalDateTime.now();
-	}
+//	public Course(){
+//		
+//	}
+//	
+//	public Course(String name, String author, SkillLevel level, String description, String prereqs, BigDecimal fee,
+//			String endGoal, String type) {
+//		super();
+//		this.name = name;
+//		this.author = author;
+//		this.level = level;
+//		this.description = description;
+//		this.prereqs = prereqs;
+//		this.fee = fee;
+//		this.endGoal = endGoal;
+//		this.type = type;
+//		this.createdDateTime = LocalDateTime.now();
+//		this.updatedDateTime = LocalDateTime.now();
+//	}
 
-	public Long getCourseId() {
-		return courseId;
-	}
-
-	public void setCourseId(Long courseId) {
-		this.courseId = courseId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
-	public SkillLevel getLevel() {
-		return level;
-	}
-
-	public void setLevel(SkillLevel level) {
-		this.level = level;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getPrereqs() {
-		return prereqs;
-	}
-
-	public void setPrereqs(String prereqs) {
-		this.prereqs = prereqs;
-	}
-
-	public BigDecimal getFee() {
-		return fee;
-	}
-
-	public void setFee(BigDecimal fee) {
-		this.fee = fee;
-	}
-
-	public String getEndGoal() {
-		return endGoal;
-	}
-
-	public void setEndGoal(String endGoal) {
-		this.endGoal = endGoal;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public List<User> getRegisteredUsers() {
-		return registeredUsers;
-	}
-
-	public void setRegisteredUsers(List<User> registeredUsers) {
-		this.registeredUsers = registeredUsers;
-	}
-
-	public List<Topic> getTopics() {
-		return topics;
-	}
-
-	public void setTopics(List<Topic> topics) {
-		this.topics = topics;
-	}
-
-	public LocalDateTime getCreatedDateTime() {
-		return createdDateTime;
-	}
-
-	public void setCreatedDateTime(LocalDateTime createdDateTime) {
-		this.createdDateTime = createdDateTime;
-	}
-
-	public LocalDateTime getUpdatedDateTime() {
-		return updatedDateTime;
-	}
-
-	public void setUpdatedDateTime(LocalDateTime updatedDateTime) {
-		this.updatedDateTime = updatedDateTime;
-	}
-
-	public String getAuthorFullName() {
-		return authorFullName;
-	}
-
-	public void setAuthorFullName(String authorFullName) {
-		this.authorFullName = authorFullName;
-	}
-	
-	public Integer getVersionId() {
-		return versionId;
-	}
-	
-	public void setVersionId(Integer versionId) {
-		this.versionId = versionId;
-	}
+//	public Long getCourseId() {
+//		return courseId;
+//	}
+//
+//	public void setCourseId(Long courseId) {
+//		this.courseId = courseId;
+//	}
+//
+//	public String getName() {
+//		return name;
+//	}
+//
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//
+//	public String getAuthor() {
+//		return author;
+//	}
+//
+//	public void setAuthor(String author) {
+//		this.author = author;
+//	}
+//
+//	public SkillLevel getLevel() {
+//		return level;
+//	}
+//
+//	public void setLevel(SkillLevel level) {
+//		this.level = level;
+//	}
+//
+//	public String getDescription() {
+//		return description;
+//	}
+//
+//	public void setDescription(String description) {
+//		this.description = description;
+//	}
+//
+//	public String getPrereqs() {
+//		return prereqs;
+//	}
+//
+//	public void setPrereqs(String prereqs) {
+//		this.prereqs = prereqs;
+//	}
+//
+//	public BigDecimal getFee() {
+//		return fee;
+//	}
+//
+//	public void setFee(BigDecimal fee) {
+//		this.fee = fee;
+//	}
+//
+//	public String getEndGoal() {
+//		return endGoal;
+//	}
+//
+//	public void setEndGoal(String endGoal) {
+//		this.endGoal = endGoal;
+//	}
+//
+//	public String getType() {
+//		return type;
+//	}
+//
+//	public void setType(String type) {
+//		this.type = type;
+//	}
+//
+//	public List<User> getRegisteredUsers() {
+//		return registeredUsers;
+//	}
+//
+//	public void setRegisteredUsers(List<User> registeredUsers) {
+//		this.registeredUsers = registeredUsers;
+//	}
+//
+//	public List<Topic> getTopics() {
+//		return topics;
+//	}
+//
+//	public void setTopics(List<Topic> topics) {
+//		this.topics = topics;
+//	}
+//
+//	public LocalDateTime getCreatedDateTime() {
+//		return createdDateTime;
+//	}
+//
+//	public void setCreatedDateTime(LocalDateTime createdDateTime) {
+//		this.createdDateTime = createdDateTime;
+//	}
+//
+//	public LocalDateTime getUpdatedDateTime() {
+//		return updatedDateTime;
+//	}
+//
+//	public void setUpdatedDateTime(LocalDateTime updatedDateTime) {
+//		this.updatedDateTime = updatedDateTime;
+//	}
+//
+//	public String getAuthorFullName() {
+//		return authorFullName;
+//	}
+//
+//	public void setAuthorFullName(String authorFullName) {
+//		this.authorFullName = authorFullName;
+//	}
+//	
+//	public Integer getVersionId() {
+//		return versionId;
+//	}
+//	
+//	public void setVersionId(Integer versionId) {
+//		this.versionId = versionId;
+//	}
 
 	
 

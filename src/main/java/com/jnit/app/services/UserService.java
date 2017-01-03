@@ -1,39 +1,19 @@
 package com.jnit.app.services;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.jnit.app.model.User;
-import com.jnit.app.repositories.UserRepository;
 
-@Service
-@Transactional
-public class UserService {
+public interface UserService {
 
-	@Autowired
-	private UserRepository userRepository;
+	public User createUser(User user) throws Exception;
 	
-	public User createUser(User user){
-		user.setCreatedDateTime(LocalDateTime.now());
-		user.setUpdatedDateTime(LocalDateTime.now());
-		return userRepository.save(user);
-	}
+	public User updateUser(User user) throws Exception;
 	
-	public User updateUser(User user){
-		user.setUpdatedDateTime(LocalDateTime.now());
-		return userRepository.save(user);
-	}
-
-	public List<User> getAllUsers() {
-		return userRepository.findAll();
-	}
-
-	public void deleteUser(Long userId) {
-		userRepository.delete(userId);
-	}
-
+	public List<User> getAllUsers() throws Exception;
+	
+	public User getUserById(Long userId) throws Exception;
+	
+	public void deleteUser(Long userId) throws Exception;
+	
 }

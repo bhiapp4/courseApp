@@ -263,6 +263,7 @@ Spring MVC annotations
 -@DeleteMapping
 -@Valid -> MethodArgumentNotValidException(error messages)
 -@ExceptionHandler ->
+-@RestControllerAdvice
 
 ResponseEntity handleCourseNotFoundException(CourseNotFoundException cnf){
 	return 
@@ -292,9 +293,92 @@ Course creation page -> Create course(POST), Update Course(PUT), Delete Course(D
 -Course Controller
 -Login Controller
 
+--Running from Maven command line
+--Download Tomcat 7/8
+--Setup Tomcat_Home and point to to the tomcat path
+--add the following to tomcat/conf/tomcat-users.xml
+<role rolename="manager-gui"/>
+<role rolename="admin-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager"/>
+<user username="admin" password="11qqsd" roles="admin-gui,admin,manager,manager-gui,manager-script,manager-jmx,manager-status"/>    
+--Go to .m2 folder and change the settings.xml servers section, if none exists, create a settings.xml file
+ <server>
+    <id>MyTomcat</id>
+    <username>admin</username>
+    <password>11qqsd</password>
+  </server>
+ --change your maven project pom file to add below to plugins
+ 				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.1</version>
+					<configuration>
+						<url>http://localhost:8080/manager/text</url>
+					    <server>MyTomcat</server>
+					    <path>/courseApp</path>
+					</configuration>
+				</plugin>
+  
+--Start tomcat 7 server from command line by navigating to bin folder and then execute ./shutdown.bat or ./shutdown.sh from git bash
+--then do 
+	mvn tomcat7:deploy 
+	mvn tomcat7:redeploy
+	mvn tomcat7:undeploy
+	mvn tomcat7:deploy-only - if the war is already there then this command should be fine
+	
+	
+
+-Jackson annotations intro - JAXB ->Java to XML to XML to Java
+-Performing validations in REST/ Custom data formats - MethodArgumentNotValidException - define exception handler
+-Exception handling and defining Custom Exception handlers
+-Http status codes
+-Swagger documentation for REST API - http://localhost:8080/courseApp/swagger-ui.html
+--
+-Enabling etag support in spring and returning 304 for subsequent request if the response is not changed
+-CORS -> cross origin resource sharing -> cross domain requests
+
+Migrating from Spring mvc to jersey
+-Domain objects, repositories, services stay ASIS
+-Controllers, exception handling, handling CORS, Swagger documentation is changed
+
+REST Client -> Java code to talk to ur webservice(Jax-RS(Jersey), Apache HttpClient, Spring REST client, Java way with HttpURLConnection)
+
+Spring transaction management
+-- Local transactions(modifying one resource) and global transactions(more than one database)
+--- Programmatic transaction management and Declarative transaction management
+--- Declarative transaction management
+- Transaction Manager -> PlatformTransactionManager -> HibernateTransactionManager, JPATransactionManager, JTATransactionmanager...
+- Enable transactions
+- Define where we need transactions(@Transactional)
+
+--creditAccount, debitAccount, logTransaction
+
+--Unchecked Exception
+--Transaction propogation levels in Spring
+--Required ->if there is a transaction already present, the method joins the transaction
+m1(Required)->m2(Required)
+m1(Required)->m2(Requires_new)
+
+--RequiresNew -> It always starts a brand new transaction
+
+lombok
+Spring AOP - Aspect oriented programming
+------- before, after,around, after returning, after throwing
+--joinpoint - where spring has to apply the advice
+--pointcut -> set of one or more join points - define that with a pointcut expression
+
+Logging frameworks
+log file
+log4j - 1 and 2
+logback
+---Console,File
+--Appenders(Console appender, file appender)
+--- xml, .properties, json, yaml
 
 
 
+Junit, Mockito and Eclemma(Code Coverage)
 
 
 
